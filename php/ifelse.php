@@ -17,7 +17,6 @@ if ($t < "6") {
 ?><br>
  <?php
 $t = date("H");
-
 if ($t < "10") {
   echo "This is if statement";
 } elseif ($t < "20") {

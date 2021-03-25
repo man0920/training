@@ -2,9 +2,7 @@
 <html>
 <body style="text-align:center";>
 
-<?php
-echo "<b>Ist time format </b><br>";
-
+<?= "<b>Ist time format </b><br>";
 $today = date("h:i a");
 echo $today;
 echo "<br>";

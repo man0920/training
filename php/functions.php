@@ -25,11 +25,12 @@ function CompanyName(){
 print_r($array);
 CompanyName("HMA","1982","Employees");
 print_r($array);
-function familyName($fname, $year ,$company="HMA") {
+function familyName($fname, $year ,$company="Wipro") {
   echo "$fname , An employee of Marketing with $company , Born in $year <br>";
 }
 familyName("Srikar", "1990");
 familyName("Lalit", "1990");
+familyName("Lalit", "1990","TCS");
 ?>
 
 </body>
