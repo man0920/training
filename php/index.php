@@ -30,6 +30,7 @@
 		.col a span { border-radius:5px;padding:0 5px;  color:#17a2b8; }
 .white { background:white; }
 #head{background:#17a2b8;
+border-radius:15px 15px 0px 0px;
 padding:10px;
 color:white;
 font-family:terminal;}

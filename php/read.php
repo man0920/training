@@ -1,69 +1,74 @@
 <?php
-// Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-    // Include config file
     require_once "config.php";
-    
-    // Prepare a select statement
     $sql = "SELECT * FROM employees WHERE id = ?";
-    
-    if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
+		if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_bind_param($stmt, "i", $param_id);
-        
-        // Set parameters
         $param_id = trim($_GET["id"]);
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-    
-            if(mysqli_num_rows($result) == 1){
-                /* Fetch result row as an associative array. Since the result set
-                contains only one row, we don't need to use while loop */
+				if(mysqli_num_rows($result) == 1){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                
-                // Retrieve individual field value
                 $name = $row["name"];
                 $address = $row["address"];
                 $salary = $row["salary"];
-            } else{
-                // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+				} else{
+				header("location: error.php");
                 exit();
-            }
-            
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-    }
-     
-    // Close statement
-    mysqli_stmt_close($stmt);
-    
-    // Close connection
-    mysqli_close($link);
-} else{
-    // URL doesn't contain id parameter. Redirect to error page
+					}
+			} else{
+             echo "Oops! Something went wrong. Please try again later.";
+				}
+				mysqli_stmt_close($stmt);
+		}
+			
+				mysqli_close($link);
+	} else{
     header("location: error.php");
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>View Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
         .wrapper{
             width: 600px;
             margin: 0 auto;
         }
+		.col{
+		text-align:center;
+		padding:20px;
+		background:#17a2b8;}
+		.col a{ text-decoration:none;
+		padding:30px;
+		font-family:terminal;
+		color:white;
+		font-size:25px;
+		}
+		.col i {font-size:30px; float:left;margin-left:80px;}
+		.col a span { border-radius:5px;padding:0 5px;  color:#17a2b8; }
+.white { background:white; }
+#head{background:#17a2b8;
+padding:10px;
+color:white;
+font-family:terminal;}
     </style>
 </head>
 <body>
+<div class= "row">
+	<div class="col">
+		<a href="index.php"><i href="index.php"class="fa fa-home">&nbsp;Home</i></a>
+		<a href="create.php"><span href="create.php" class="white">C</span></a> 
+		<a href="read.php"><span href="read.php" class="white">R</span></a>
+		<a href="update.php"><span href="update.php" class="white">U</span></a> 
+		<a href="delete.php"><span href="delete.php" class="white">D</span></a>
+	</div>
+</div>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
