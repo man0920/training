@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,10 +48,10 @@ font-family:terminal;}
 <body>
 <div class= "row">
 	<div class="col">
-	<a href="index.php"><i href="index.php"class="fa fa-home">&nbsp;Home</i></a>
-	<a href="create.php"><span href="create.php" class="white">C</span></a> 
-	<a href="read.php"><span href="read.php" class="white">R</span></a>
-	<a href="update.php"><span href="update.php" class="white">U</span></a> 
-	<a href="delete.php"><span href="delete.php" class="white">D</span></a>
+	<a href="index.php"><i class="fa fa-home">&nbsp;Home</i></a>
+	<a href="create.php"><span  class="white">C</span></a> 
+	<a href="read.php"><span  class="white">R</span></a>
+	<a href="update.php"><span  class="white">U</span></a> 
+	<a href="delete.php"><span  class="white">D</span></a>
 	</div>
 </div></body></html>

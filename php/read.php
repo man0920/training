@@ -1,4 +1,6 @@
 <?php
+require_once "header.php";
+die(123);
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     $sql = "SELECT * FROM employees WHERE id = ?";
@@ -13,7 +15,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $address = $row["address"];
                 $salary = $row["salary"];
 				} else{
-				header("location: error.php");
+					$_SESSION["error_msg"]= "Id not provided";
+				die(456);header("location: error.php");
                 exit();
 					}
 			} else{
@@ -24,51 +27,13 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 			
 				mysqli_close($link);
 	} else{
-    header("location: error.php");
+		$_SESSION["error_msg"]= "Id not found";
+    die(123);header("location: error.php");
+	
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Record</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-        .wrapper{
-            width: 600px;
-            margin: 0 auto;
-        }
-		.col{
-		text-align:center;
-		padding:20px;
-		background:#17a2b8;}
-		.col a{ text-decoration:none;
-		padding:30px;
-		font-family:terminal;
-		color:white;
-		font-size:25px;
-		}
-		.col i {font-size:30px; float:left;margin-left:80px;}
-		.col a span { border-radius:5px;padding:0 5px;  color:#17a2b8; }
-.white { background:white; }
-#head{background:#17a2b8;
-padding:10px;
-color:white;
-font-family:terminal;}
-    </style>
-</head>
-<body>
-<div class= "row">
-	<div class="col">
-		<a href="index.php"><i href="index.php"class="fa fa-home">&nbsp;Home</i></a>
-		<a href="create.php"><span href="create.php" class="white">C</span></a> 
-		<a href="read.php"><span href="read.php" class="white">R</span></a>
-		<a href="update.php"><span href="update.php" class="white">U</span></a> 
-		<a href="delete.php"><span href="delete.php" class="white">D</span></a>
-	</div>
-</div>
+
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
